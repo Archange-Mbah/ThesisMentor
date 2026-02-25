@@ -1,23 +1,40 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ThesisMentor</title>
     <link rel="stylesheet" href="/static/css/style.css" />
   </head>
+
   <body>
     <div class="layout">
-      <div class="pdf-pane">
-        <h2>PDF</h2>
-        <p>PDF viewer will go here.</p>
-      </div>
-
-      <div class="chat-pane">
+      <!-- LEFT: Chat -->
+      <section class="chat-pane">
         <h2>Chat</h2>
-        <input id="q" placeholder="Ask something..." />
-        <button id="askBtn">Ask</button>
-        <pre id="out"></pre>
-      </div>
+        <div class="upload-box">
+          <input id="pdfFile" type="file" accept="application/pdf" />
+          <button id="uploadBtn">Upload PDF</button>
+          <p id="status" style="color:#444; font-size: 14px;"></p>
+        </div>
+        <hr />
+        <div class="chat-box">
+          <input id="query" type="text" placeholder="Ask a question..." style="width:100%;" />
+          <button id="askBtn">Ask</button>
+          <pre id="answer" style="white-space: pre-wrap;"></pre>
+        </div>
+      </section>
+
+      <!-- RIGHT: PDF -->
+      <section class="pdf-pane">
+        <h2>PDF</h2>
+        <iframe
+          id="pdfFrame"
+          title="PDF Viewer"
+          src=""
+          style="width: 100%; height: calc(100vh - 80px); border: 1px solid #ddd;"
+        ></iframe>
+      </section>
     </div>
 
     <script src="/static/js/app.js"></script>
