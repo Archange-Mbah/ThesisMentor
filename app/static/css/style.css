@@ -1,3 +1,233 @@
-.layout { display: flex; height: 100vh; }
-.chat-pane { flex: 1; padding: 12px; border-right: 1px solid #eee; }
-.pdf-pane { flex: 2; padding: 12px; }
+/*index html*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f9;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f2937;
+    color: white;
+    padding: 15px 40px;
+}
+
+nav a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: #3b82f6;
+    color: white;
+}
+
+.hero button {
+    padding: 10px 25px;
+    border: none;
+    background: white;
+    color: #3b82f6;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+/* UPLOAD */
+
+.upload {
+    text-align: center;
+    padding: 60px;
+}
+
+.upload input {
+    padding: 10px;
+}
+
+
+/* FEATURES */
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px;
+}
+
+.feature {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1f2937;
+    color: white;
+}
+
+
+
+/*chat html*/
+
+/* GLOBAL */
+
+body{
+margin:0;
+font-family: "Segoe UI", sans-serif;
+background:#f8fafc;
+color:#1e293b;
+}
+
+
+/* LAYOUT */
+
+.layout{
+display:flex;
+height:100vh;
+}
+
+
+/* CHAT SIDE */
+
+.chat-pane{
+
+width:380px;
+background:white;
+
+display:flex;
+flex-direction:column;
+
+border-right:1px solid #e5e7eb;
+}
+
+
+.title{
+
+padding:20px;
+font-size:20px;
+font-weight:600;
+border-bottom:1px solid #eee;
+}
+
+
+/* UPLOAD */
+
+.upload-box{
+
+padding:20px;
+border-bottom:1px solid #eee;
+
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+
+.primary-btn{
+
+padding:10px;
+border:none;
+
+background:#2563eb;
+color:white;
+
+border-radius:6px;
+cursor:pointer;
+}
+
+
+/* CHAT */
+
+.chat-box{
+
+display:flex;
+flex-direction:column;
+flex:1;
+}
+
+
+/* MESSAGES */
+
+.messages{
+
+flex:1;
+padding:20px;
+
+overflow-y:auto;
+
+background:#f9fafb;
+}
+
+
+/* INPUT AREA */
+
+.input-area{
+
+display:flex;
+
+padding:15px;
+border-top:1px solid #eee;
+gap:10px;
+}
+
+
+.input-area input{
+
+flex:1;
+padding:10px;
+
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+
+.input-area button{
+
+padding:10px 16px;
+
+border:none;
+background:#2563eb;
+color:white;
+
+border-radius:6px;
+cursor:pointer;
+}
+
+
+/* PDF SIDE */
+
+.pdf-pane{
+
+flex:1;
+padding:10px;
+background:#f1f5f9;
+}
+
+
+.pdf-pane iframe{
+
+width:100%;
+height:100%;
+
+border:none;
+
+border-radius:6px;
+background:white;
+}

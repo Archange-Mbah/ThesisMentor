@@ -43,8 +43,10 @@ def detect_intro_pages(pdf_path: str) -> int:
         tests/test_docs/sample.pdf
       If it does not exist, you must add a small PDF there before running tests.
     """
+
     # TODO: implement
     raise NotImplementedError
+    
 
 
 def iter_pages_with_labels(pdf_path: str):

@@ -1,42 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ThesisMentor</title>
-    <link rel="stylesheet" href="/static/css/style.css" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Thesis Mentor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
-  <body>
-    <div class="layout">
-      <!-- LEFT: Chat -->
-      <section class="chat-pane">
-        <h2>Chat</h2>
-        <div class="upload-box">
-          <input id="pdfFile" type="file" accept="application/pdf" />
-          <button id="uploadBtn">Upload PDF</button>
-          <p id="status" style="color:#444; font-size: 14px;"></p>
-        </div>
-        <hr />
-        <div class="chat-box">
-          <input id="query" type="text" placeholder="Ask a question..." style="width:100%;" />
-          <button id="askBtn">Ask</button>
-          <pre id="answer" style="white-space: pre-wrap;"></pre>
-        </div>
-      </section>
+<body>
 
-      <!-- RIGHT: PDF -->
-      <section class="pdf-pane">
-        <h2>PDF</h2>
-        <iframe
-          id="pdfFrame"
-          title="PDF Viewer"
-          src=""
-          style="width: 100%; height: calc(100vh - 80px); border: 1px solid #ddd;"
-        ></iframe>
-      </section>
+<header>
+    <h1>Thesis Mentor</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+    <h2>Your intelligent assistant for thesis writing</h2>
+    <p>Analyze your PDFs and get instant answers.</p>
+    <a href="{{ url_for('chat') }}">
+    <button>Get Started</button></a>
+</section>
+
+
+<section class="upload">
+    <h2>Upload your document</h2>
+
+    <form>
+        <input type="file" accept=".pdf">
+        <button type="submit">Analyze</button>
+    </form>
+</section>
+
+
+<section class="features">
+
+    <div class="feature">
+        <h3>PDF Analysis</h3>
+        <p>Upload your thesis and analyze its content.</p>
     </div>
 
-    <script src="/static/js/app.js"></script>
-  </body>
+    <div class="feature">
+        <h3>Automatic Questions</h3>
+        <p>Ask questions about your document.</p>
+    </div>
+
+    <div class="feature">
+        <h3>Smart Summary</h3>
+        <p>Get a quick summary of your document.</p>
+    </div>
+
+</section>
+
+
+<footer>
+    <p>© 2026 Thesis Mentor</p>
+</footer>
+
+</body>
 </html>
