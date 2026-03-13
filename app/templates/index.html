@@ -3,41 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Thesis Mentor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
 </head>
 
 <body>
 
 <header>
-    <h1>Thesis Mentor</h1>
+    <img src="/static/images/logoTM.png" alt="Logo" class="logo">
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Features</a>
-        <a href="#">Contact</a>
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
     </nav>
 </header>
 
 
 <section class="hero">
-    <h2>Your intelligent assistant for thesis writing</h2>
-    <p>Analyze your PDFs and get instant answers.</p>
-    <a href="{{ url_for('chat') }}">
-    <button>Get Started</button></a>
+    <h2>Your Intelligent Assistant for Thesis Writing</h2>
+    <p> <b>Analyze your PDFs and get instant answers.</b></p>
+    <a href="/chat">
+        <button>Get Started</button>
+    </a>
 </section>
 
-
-<section class="upload">
-    <h2>Upload your document</h2>
-
+<section id="upload" class="upload">
+    <h2>Upload Your Document</h2>
     <form>
-        <input type="file" accept=".pdf">
-        <button type="submit">Analyze</button>
+        <input type="file" accept=".pdf" id="pdfFileIndex">
+        <button type="button" id="uploadBtnIndex">Analyze</button>
     </form>
+    <p id="statusIndex"></p>
 </section>
 
-
-<section class="features">
-
+<section id="features" class="features">
     <div class="feature">
         <h3>PDF Analysis</h3>
         <p>Upload your thesis and analyze its content.</p>
@@ -55,8 +54,7 @@
 
 </section>
 
-
-<footer>
+<footer id="contact">
     <p>© 2026 Thesis Mentor</p>
 </footer>
 

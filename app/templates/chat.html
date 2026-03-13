@@ -1,56 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ThesisMentor</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <title>Thesis Mentor Chat</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
 </head>
 
 <body>
+    
+<header>
+    <img src="/static/images/logoTM.png" alt="Logo" class="logo">
+    <nav>
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
 <div class="layout">
-<!-- LEFT : CHAT -->
-<section class="chat-pane">
-<h2 class="title">Thesis Mentor</h2>
-<div class="upload-box">
-<input id="pdfFile" type="file" accept="application/pdf" />
 
-<button id="uploadBtn" class="primary-btn">Upload PDF</button>
+    <!-- LEFT : CHAT -->
+    <section class="chat-pane">
+        <div class="upload-box">
+            <input id="pdfFile" type="file" accept="application/pdf" />
+            <button id="uploadBtn" class="primary-btn">Upload PDF</button>
+            <p id="status"></p>
+        </div>
 
-<p id="status"></p>
+        <div class="chat-box">
+            <div class="messages">
+                <pre id="answer"></pre>
+            </div>
+            <div class="input-area">
+                <input id="query" type="text" placeholder="Ask a question about the document..." />
+                <button id="askBtn">Ask</button>
+            </div>
+        </div>
+    </section>
 
-</div>
-
-<div class="chat-box">
-
-<div class="messages">
-<pre id="answer"></pre>
-</div>
-
-<div class="input-area">
-
-<input id="query" type="text" placeholder="Ask a question about the document..." />
-
-<button id="askBtn">Ask</button>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- RIGHT : PDF -->
-
-<section class="pdf-pane">
-<iframe
-id="pdfFrame"
-title="PDF Viewer"
-src=""
-></iframe>
-</section>
+    <!-- RIGHT : PDF -->
+    <section class="pdf-pane">
+        <iframe id="pdfFrame" title="PDF Viewer" src=""></iframe>
+    </section>
 
 </div>
-<script src="/static/js/app.js"></script>
+
 </body>
 </html>

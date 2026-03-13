@@ -5,33 +5,45 @@ from fastapi.responses import JSONResponse
 
 router = APIRouter()
 
+UPLOAD_DIR = os.path.join("app", "static", "uploads")
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
 
 @router.post("/upload")
 async def upload(file: UploadFile = File(...)):
-    # 1) Check that a file was provided
+    """
+    Endpoint to upload a PDF file.
+    Returns a JSON containing:
+    - doc_id: unique identifier
+    - file_url: URL to display the PDF in the frontend
+    """
+
+    # 1️ Check that a file was provided
     if not file or not file.filename:
         return JSONResponse({"error": "No file provided"}, status_code=400)
-    # 2) Optional: reject non-PDF files
+
+    # 2️ Reject non-PDF files
     if file.content_type != "application/pdf":
         return JSONResponse({"error": "Only PDF files are allowed"}, status_code=400)
-    # 3) Create the uploads folder if it does not exist
-    upload_dir = os.path.join("app", "static", "uploads")
-    os.makedirs(upload_dir, exist_ok=True)
-    # 4) Create a unique ID and filename
-    doc_id = uuid.uuid4().hex
-    filename = f"{doc_id}.pdf"
-    save_path = os.path.join(upload_dir, filename)
 
-    # 5) Read the uploaded file bytes and save to disk
-    contents = await file.read()
-    with open(save_path, "wb") as f:
-        f.write(contents)
+    try:
+        # 3️ Generate a unique document ID and safe filename
+        doc_id = uuid.uuid4().hex
+        filename = f"{doc_id}.pdf"
+        save_path = os.path.join(UPLOAD_DIR, filename)
 
-    # 6) Return info so the frontend can load the file
-    return {
-        "status": "ok",
-        "doc_id": doc_id,
-        "file_url": f"/static/uploads/{filename}",
-    }
+        # 4️ Save the uploaded PDF
+        contents = await file.read()
+        with open(save_path, "wb") as f:
+            f.write(contents)
 
-    return
+        # 5️ Return info for frontend
+        return JSONResponse({
+            "status": "ok",
+            "doc_id": doc_id,
+            "file_url": f"/static/uploads/{filename}"
+        })
+
+    except Exception as e:
+        # 6️ Catch any unexpected errors
+        return JSONResponse({"error": f"Failed to upload file: {str(e)}"}, status_code=500)

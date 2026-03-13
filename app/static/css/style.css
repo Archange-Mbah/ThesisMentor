@@ -12,19 +12,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 60px;
-    background: white;
+    padding: 10px 40px;
+    color: white;
+    background: #1f2937;
     border-bottom: 1px solid #e5e7eb;
 }
 
-header h1 {
-    font-size: 20px;
-    color: #2563eb;
+header .logo {
+    height: 60px;
+    margin-right: 20px;
 }
 
 nav a {
     margin-left: 25px;
-    color: #374151;
+    color: white;
     font-weight: 500;
 }
 
@@ -50,13 +51,14 @@ nav a:hover {
 .hero p {
     font-size: 18px;
     margin-bottom: 30px;
+    color: #1f2937;
 }
 
 .hero button {
     padding: 14px 32px;
     border: none;
     background: white;
-    color: #2563eb;
+    color: #1f2937;
     font-size: 16px;
     border-radius: 8px;
     font-weight: 600;
@@ -65,6 +67,8 @@ nav a:hover {
 
 .hero button:hover {
     transform: translateY(-2px);
+    background-color: #1f2937;
+    color: white;
 }
 
 
@@ -92,11 +96,11 @@ nav a:hover {
 .feature {
     background: white;
     padding: 35px;
-    border-radius: 10px;
+    border-radius: 15px;
     width: 260px;
     text-align: center;
 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     transition: 0.3s;
 }
 
@@ -138,20 +142,26 @@ height:100vh;
 
 /* CHAT SIDE */
 
-.chat-pane{
+.chat-header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:15px;
+}
 
+.chat-header .logo{
+height:40px;
+}
+
+.chat-pane{
 width:380px;
 background:white;
-
 display:flex;
 flex-direction:column;
-
 border-right:1px solid #e5e7eb;
 }
 
-
 .title{
-
 padding:20px;
 font-size:20px;
 font-weight:600;
