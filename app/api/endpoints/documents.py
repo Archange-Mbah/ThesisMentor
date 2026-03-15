@@ -2,6 +2,7 @@ import os
 import uuid
 from fastapi import APIRouter, UploadFile, File
 from fastapi.responses import JSONResponse
+from app.infrastructure.pdf_processing import detect_intro_pages
 
 router = APIRouter()
 
@@ -36,13 +37,17 @@ async def upload(file: UploadFile = File(...)):
         contents = await file.read()
         with open(save_path, "wb") as f:
             f.write(contents)
+        # Detect introduction pages
+        intro_page_count = detect_intro_pages(save_path)
 
         # 5️ Return info for frontend
-        return JSONResponse({
+        return JSONResponse({ 
             "status": "ok",
             "doc_id": doc_id,
-            "file_url": f"/static/uploads/{filename}"
-        })
+            "file_url": f"/static/uploads/{filename}",
+            "intro_page_count": intro_page_count
+            })
+        
 
     except Exception as e:
         # 6️ Catch any unexpected errors

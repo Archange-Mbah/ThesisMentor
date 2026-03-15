@@ -1,0 +1,26 @@
+# Web framework
+fastapi==0.111.0
+
+# ASGI server
+uvicorn==0.31.1
+
+# PDF handling
+PyMuPDF==1.26.0
+
+# Form handling
+python-multipart>=0.0.7
+
+# Data validation
+pydantic==2.6.0
+anyio==3.7.1
+
+# FastAPI dependencies
+starlette>=0.37.2,<0.38.0
+fastapi-cli>=0.0.2
+httpx>=0.23.0
+ujson>=5.12.0
+orjson>=3.2.1
+email_validator>=2.0.0
+
+# Optional (if you use Jinja2 templates)
+jinja2>=3.1.6

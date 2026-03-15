@@ -1,5 +1,3 @@
-from flask import Flask
+from fastapi import FastAPI
 
-app = Flask(__name__)
-
-from app import routes
+app = FastAPI()

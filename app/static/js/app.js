@@ -10,23 +10,18 @@ const askBtn = document.getElementById("askBtn");
 const answerEl = document.getElementById("answer");
 
 uploadBtn.addEventListener("click", async () => {
+  if (!pdfFile.files.length) {
+    statusEl.textContent = "Please choose a PDF first.";
+    return;
+  }
+
+  statusEl.textContent = "Uploading...";
+  const file = pdfFile.files[0];
+  const formData = new FormData();
+  formData.append("file", file);
+
   try {
-    if (!pdfFile.files || pdfFile.files.length === 0) {
-      statusEl.textContent = "Please choose a PDF first.";
-      return;
-    }
-
-    statusEl.textContent = "Uploading...";
-    const file = pdfFile.files[0];
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const res = await fetch("/upload", {
-      method: "POST",
-      body: formData,
-    });
-
+    const res = await fetch("/upload", { method: "POST", body: formData });
     const data = await res.json();
 
     if (!res.ok) {
@@ -37,7 +32,7 @@ uploadBtn.addEventListener("click", async () => {
     currentDocId = data.doc_id;
     statusEl.textContent = `Upload OK. doc_id=${currentDocId}`;
 
-    // Display the PDF
+    // Display PDF
     pdfFrame.src = data.file_url;
   } catch (err) {
     console.error(err);
@@ -46,35 +41,30 @@ uploadBtn.addEventListener("click", async () => {
 });
 
 askBtn.addEventListener("click", async () => {
+  if (!currentDocId) {
+    answerEl.textContent = "Upload a PDF first.";
+    return;
+  }
+
+  const query = queryEl.value.trim();
+  if (!query) {
+    answerEl.textContent = "Type a question first.";
+    return;
+  }
+
+  answerEl.textContent = "Thinking...";
+
   try {
-    if (!currentDocId) {
-      answerEl.textContent = "Upload a PDF first.";
-      return;
-    }
-
-    const query = (queryEl.value || "").trim();
-    if (!query) {
-      answerEl.textContent = "Type a question first.";
-      return;
-    }
-
-    answerEl.textContent = "Thinking...";
-
     const res = await fetch("/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        doc_id: currentDocId,
-        query: query,
-      }),
+      body: JSON.stringify({ doc_id: currentDocId, query }),
     });
-
     const data = await res.json();
     if (!res.ok) {
       answerEl.textContent = data.error || "Ask failed.";
       return;
     }
-
     answerEl.textContent = data.answer;
   } catch (err) {
     console.error(err);
